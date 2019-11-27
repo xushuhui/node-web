@@ -1,11 +1,10 @@
 const Koa = require("koa")
-const axios = require("axios")
+const Router = require("koa-router")
+const InitManager = require('./core/init')
 const app = new Koa()
 
-app.use(async (ctx,next)=>{
-    const res = await axios.get("http://www.baidu.com")
-    console.log(res);
-     
-})
+process.cwd()
+InitManager.initCore(app)
+
 
 app.listen(3000)
