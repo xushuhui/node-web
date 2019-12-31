@@ -7,7 +7,7 @@ class InitManager {
     }
 
     static initLoadRouters() {
-        const apiDir = `${process.cwd()}/app/controllers`
+        const apiDir = `${process.cwd()}/routes`
         requireDirectory(module,apiDir, {
             visit: (obj) => {
                 if (obj instanceof Router) {

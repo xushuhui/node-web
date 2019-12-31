@@ -1,9 +1,6 @@
-const Router = require("koa-router")
-const router = new Router()
-
-router.get('/v1/user',(ctx,next)=>{
-    ctx.body = {
-        key:"user"
+class User{
+     getUser(){
+        return {"code":0}
     }
-})
-module.exports = router
+}
+module.exports = User
