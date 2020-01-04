@@ -1,5 +1,6 @@
 const requireDirectory = require("require-directory")
 const Router = require("koa-router")
+const fs = require('fs')
 class InitManager {
     static initCore(app) {
         InitManager.app = app
@@ -9,9 +10,10 @@ class InitManager {
     }
 
     static loadConfig(path = '') {
-        const configPath = path || process.cwd() + '/config/config.js'
-        const config = require(configPath)
-        global.config = config
+        const env = fs.readFileSync(process.cwd() + '/.env', 'utf8')
+        const configPath = path || process.cwd() + '/config/config-' + env + '.js'
+        global.config = require(configPath)
+        global.config.env = env
     }
     static initLoadRouters() {
         const apiDir = `${process.cwd()}/routes`
@@ -25,8 +27,8 @@ class InitManager {
 
     }
     static loadHttpException() {
-        const errors = require('./http-exception')
-        global.errs = errors
+
+        global.errs = require('./http-exception')
     }
 }
 

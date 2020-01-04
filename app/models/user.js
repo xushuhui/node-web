@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 
 const {
-    sequelize
+    db
 } = require('../../core/db')
 
 
@@ -72,7 +72,7 @@ User.init({
         unique: true
     },
 }, {
-    sequelize,
+    db,
     tableName: 'user'
 })
 
